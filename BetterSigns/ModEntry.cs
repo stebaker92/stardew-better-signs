@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using StardewModdingAPI;
 
 namespace BetterSigns
@@ -15,7 +15,7 @@ namespace BetterSigns
 
 			config = helper.ReadConfig<Config>();
 
-			var harmony = HarmonyInstance.Create(this.ModManifest.UniqueID);
+			var harmony = new Harmony(this.ModManifest.UniqueID);
 
 			harmony.Patch(
 			   original: AccessTools.Method(typeof(StardewValley.Objects.Sign), nameof(StardewValley.Objects.Sign.checkForAction)),
