@@ -19,7 +19,12 @@ namespace BetterSigns
 
 			harmony.Patch(
 			   original: AccessTools.Method(typeof(StardewValley.Objects.Sign), nameof(StardewValley.Objects.Sign.checkForAction)),
-			   prefix: new HarmonyMethod(typeof(SignPatches), nameof(SignPatches.checkForAction_Prefix))
+			   prefix: new HarmonyMethod(typeof(SignPatcher), nameof(SignPatcher.checkForAction_Prefix))
+			);
+
+			harmony.Patch(
+			   original: AccessTools.Method(typeof(StardewValley.Object), nameof(StardewValley.Object.checkForAction)),
+			   prefix: new HarmonyMethod(typeof(ObjectPatcher), nameof(ObjectPatcher.checkForAction_Prefix))
 			);
 		}
 	}
